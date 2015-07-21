@@ -354,7 +354,9 @@ It allows you to request navitia objects referencing a line whose code is the on
 especially lines themselves and routes.
 
 Examples :
+
 https://api.navitia.io/v1/coverage/fr-idf/lines?filter=line.code=4
+
 https://api.navitia.io/v1/coverage/fr-idf/routes?filter=line.code="métro 347"
 
 
