@@ -68,6 +68,10 @@ object_codes.txt | Optionnel | Ce fichier contient la liste des codes d'identifi
 admin_stations.txt | Optionnel | Ce fichier contient la liste des arrêts d'accroche des communes pour les itinéraires au départ ou à l'arrivée d'une commune
 line_groups.txt | Optionnel | Ce fichier contient la définition de groupes de lignes
 line_group_links.txt | Optionnel | Ce fichier contient la liaison entre un groupe de ligne et la liste des lignes qui le compose
+fare.csv | Optionnel | Tarification : Ce fichier contient les configuration des transitions
+prices.csv | Optionnel | Prix des tickets : Ce fichier contient les prix appliqués (plein tarif)
+od_fares.csv | Optionnel | Liste des billets Origine-Destination
+
 
 ## Fichiers des calendriers par période
 Fichier | Contrainte | Commentaire
@@ -517,50 +521,8 @@ feed_license | chaine | Libre | Licence d'utilisation des données globale du r�
 fusio_url | chaine | Libre | URL du système ayant généré le jeu de données
 fusio_version | chaine | Libre | Version du système ayant généré le jeu de données
 
-### grid_calendars.txt (optionnel)
-Ce fichier contient les calendriers. 
-
-Colonne | Type | Contrainte | Commentaire
---- | --- | --- | ---
-grid_calendar_id | chaine | Requis | Identifiant du calendrier
-name | chaine | Requis | Nom du calendrier
-monday | entier | Requis | 0 : Ne circule pas ce jour <br> 1 : Circule ce jour
-tuesday | entier | Requis | 0 : Ne circule pas ce jour <br> 1 : Circule ce jour
-wednesday | entier | Requis | 0 : Ne circule pas ce jour <br> 1 : Circule ce jour
-thursday | entier | Requis | 0 : Ne circule pas ce jour <br> 1 : Circule ce jour
-friday | entier | Requis | 0 : Ne circule pas ce jour <br> 1 : Circule ce jour
-saturday | entier | Requis | 0 : Ne circule pas ce jour <br> 1 : Circule ce jour
-sunday | entier | Requis | 0 : Ne circule pas ce jour <br> 1 : Circule ce jour
-
-### grid_exception_dates.txt (optionnel)
-Ce fichier contient les exceptions sur les calendriers des grilles horaires.
-
-Colonne | Type | Contrainte | Commentaire
---- | --- | --- | ---
-grid_calendar_id | string | Requis | Identifiant du calendrier de grille horaire
-date | date | Requis | Date de l'exception
-type | entier | Requis | 0 : Ne circule pas ce jour <br> 1 : Circule ce jour
-
-### grid_periods.txt (optionnel)
-Ce fichier contient les périodes des calendriers des grilles horaires.
-
-Colonne | Type | Contrainte | Commentaire
---- | --- | --- | ---
-grid_calendar_id | chaine | Requis | Identifiant du calendrier de grille horaire
-start_date | date | Requis | Date de début
-end_date | date | Requis | Date de fin
-
-### grid_rel_calendar_line.txt (optionnel)
-Ce fichier contient toutes les relations entre les lignes et les calendriers des grilles horaires.
-
-Colonne | Type | Contrainte | Commentaire
---- | --- | --- | ---
-grid_calendar_id | chaine | Requis | Identifiant du calendrier de grille horaire
-line_id | chaine | Requis | Identifiant de la ligne associée à ce calendrier (lien vers le fichier lines). Ce champ peut être vide si le champ line_external_code est renseigné.
-line_external_code | chaine | Requis | cette colonne contient le code externe NAViTiA 1 de la ligne (lien vers le fichier lines). Ce champ peut être vide si le champ line_id et renseigné
-
 ### fare.csv (optionnel)
-Tarification : Ce fichier contient les configuration des transitions (fichier : fares.csv)
+Tarification : Ce fichier contient les configuration des transitions
 --> fichier CSV, séparé par des points-virgules, encodé en UTF-8, SANS ligne d'entête.
 
 Colonne | Type | Contrainte | Commentaire
@@ -617,6 +579,48 @@ ticket_id | chaine | Requis | code prix référencé dans le fichier price.csv
 "stop": la colonne départ correspond à une zone d'arrêt (donc Origin_ID = stop_area.URI). Correspond au cas le plus classique
 "mode": la colonne départ correspond à un physical_mode. Par exemple si le tarif par OD permet de rejoindre n'importe quelle station de métro, indiquer "physical_mode:metro" dans la colonne Origin_ID et "mode" dans cette colonne
 
+
+### grid_calendars.txt (optionnel)
+Ce fichier contient les calendriers. 
+
+Colonne | Type | Contrainte | Commentaire
+--- | --- | --- | ---
+grid_calendar_id | chaine | Requis | Identifiant du calendrier
+name | chaine | Requis | Nom du calendrier
+monday | entier | Requis | 0 : Ne circule pas ce jour <br> 1 : Circule ce jour
+tuesday | entier | Requis | 0 : Ne circule pas ce jour <br> 1 : Circule ce jour
+wednesday | entier | Requis | 0 : Ne circule pas ce jour <br> 1 : Circule ce jour
+thursday | entier | Requis | 0 : Ne circule pas ce jour <br> 1 : Circule ce jour
+friday | entier | Requis | 0 : Ne circule pas ce jour <br> 1 : Circule ce jour
+saturday | entier | Requis | 0 : Ne circule pas ce jour <br> 1 : Circule ce jour
+sunday | entier | Requis | 0 : Ne circule pas ce jour <br> 1 : Circule ce jour
+
+### grid_exception_dates.txt (optionnel)
+Ce fichier contient les exceptions sur les calendriers des grilles horaires.
+
+Colonne | Type | Contrainte | Commentaire
+--- | --- | --- | ---
+grid_calendar_id | string | Requis | Identifiant du calendrier de grille horaire
+date | date | Requis | Date de l'exception
+type | entier | Requis | 0 : Ne circule pas ce jour <br> 1 : Circule ce jour
+
+### grid_periods.txt (optionnel)
+Ce fichier contient les périodes des calendriers des grilles horaires.
+
+Colonne | Type | Contrainte | Commentaire
+--- | --- | --- | ---
+grid_calendar_id | chaine | Requis | Identifiant du calendrier de grille horaire
+start_date | date | Requis | Date de début
+end_date | date | Requis | Date de fin
+
+### grid_rel_calendar_line.txt (optionnel)
+Ce fichier contient toutes les relations entre les lignes et les calendriers des grilles horaires.
+
+Colonne | Type | Contrainte | Commentaire
+--- | --- | --- | ---
+grid_calendar_id | chaine | Requis | Identifiant du calendrier de grille horaire
+line_id | chaine | Requis | Identifiant de la ligne associée à ce calendrier (lien vers le fichier lines). Ce champ peut être vide si le champ line_external_code est renseigné.
+line_external_code | chaine | Requis | cette colonne contient le code externe NAViTiA 1 de la ligne (lien vers le fichier lines). Ce champ peut être vide si le champ line_id et renseigné
 
 
 # Gestion des données perturbées / de grèves
