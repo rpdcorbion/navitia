@@ -535,18 +535,18 @@ Colonne | Type | Contrainte | Commentaire
 "clef ticket" | chaine | Requis | ID tarif (lien avec prices.csv)
 
 #### état avant et aprés changement.
-"mode": l'état avant changement correspond à un physical_mode. Par exemple, indiquer "mode=physical_mode:metro" pour indiquer que le voyageur se trouve dans le métro avant le changement. 
-"network": l'état avant changement correspond à un réseau. Par exemple, indiquer "network=network:Filbleu" pour indiquer que le voyageur se trouve sur le réseau Filbleu avant le changement
+* "mode": l'état avant changement correspond à un physical_mode. Par exemple, indiquer "mode=physical_mode:metro" pour indiquer que le voyageur se trouve dans le métro avant le changement. 
+* "network": l'état avant changement correspond à un réseau. Par exemple, indiquer "network=network:Filbleu" pour indiquer que le voyageur se trouve sur le réseau Filbleu avant le changement
 
 #### conditions de début et fin de trajet
-"zone": le voyageur se trouve dans une certaine zone tarifaire (fare_zone). Par exemple, s'il est sur la commune de Paris, on peut indiquer "zone=1" afin de créer une règle applicable uniquement depuis Paris. 
-"duration": (en minute) indique une règle applicable si le voyageur est au sein d'un système tarifaire depuis moins de "duration". 
-"nb_changes": indique une règle applicable si le voyageur est au sein d'un système tarifaire depuis moins de "duration"
+* "zone": le voyageur se trouve dans une certaine zone tarifaire (fare_zone). Par exemple, s'il est sur la commune de Paris, on peut indiquer "zone=1" afin de créer une règle applicable uniquement depuis Paris. 
+* "duration": (en minute) indique une règle applicable si le voyageur est au sein d'un système tarifaire depuis moins de "duration". 
+* "nb_changes": indique une règle applicable si le voyageur est au sein d'un système tarifaire depuis moins de "duration"
 
 #### condition globale
-"exclusive": correspond à un trajet à tarification spéciale sans correspondance (Noctilien, navettes aéroport…)
-"with_changes": correspond à l'achat d'un billet de type Origine-Destination permettant tous les changements
-"symetric": créé la même transition en permutant l'état de début et de fin (s'il est possible de changer du bus au tramway, la réciproque est vraie)
+* "exclusive": correspond à un trajet à tarification spéciale sans correspondance (Noctilien, navettes aéroport…)
+* "with_changes": correspond à l'achat d'un billet de type Origine-Destination permettant tous les changements
+* "symetric": créé la même transition en permutant l'état de début et de fin (s'il est possible de changer du bus au tramway, la réciproque est vraie)
 
 ### prices.csv
 Prix des tickets : Ce fichier contient les prix appliqués (plein tarif)
@@ -575,9 +575,9 @@ Destination mode | chaine | Requis | zone, stop ou mode
 ticket_id | chaine | Requis | code prix référencé dans le fichier price.csv
 
 #### Origin / Destination mode
-"zone": la colonne départ correspond à une zone tarifaire. Indiquer ici l'attribut fare_zone. Par exemple, pour définir que le tarif par OD fonctionne sur toutes les gares de Paris (qui est en zone 1), il suffit d'indiquer 1 dans la colonne Origin_ID et "zone" dans cette colonne.
-"stop": la colonne départ correspond à une zone d'arrêt (donc Origin_ID = stop_area.URI). Correspond au cas le plus classique
-"mode": la colonne départ correspond à un physical_mode. Par exemple si le tarif par OD permet de rejoindre n'importe quelle station de métro, indiquer "physical_mode:metro" dans la colonne Origin_ID et "mode" dans cette colonne
+* "zone": la colonne départ correspond à une zone tarifaire. Indiquer ici l'attribut fare_zone. Par exemple, pour définir que le tarif par OD fonctionne sur toutes les gares de Paris (qui est en zone 1), il suffit d'indiquer 1 dans la colonne Origin_ID et "zone" dans cette colonne.
+* "stop": la colonne départ correspond à une zone d'arrêt (donc Origin_ID = stop_area.URI). Correspond au cas le plus classique
+* "mode": la colonne départ correspond à un physical_mode. Par exemple si le tarif par OD permet de rejoindre n'importe quelle station de métro, indiquer "physical_mode:metro" dans la colonne Origin_ID et "mode" dans cette colonne
 
 
 ### grid_calendars.txt (optionnel)
