@@ -38,4 +38,6 @@
     * Fichier frames.txt rennomé à datasets.txt
     * Attribut frame_id remplacé par dataset_id dans le fichier trips.txt
     * Attribut frame_id supprimé dans le fichier stops.txt
+* Version 0.6.2 du 19/05/2016
+    * ajout de l'exention fares pour la gestion des tarifs
 
